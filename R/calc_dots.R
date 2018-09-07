@@ -36,7 +36,7 @@ calc_dots <- function(df, col_names, n_per_dot) {
     dots_df <- st_coordinates(st_cast(dots_df, "POINT"))
     dots_df <- as.data.frame(dots_df)
     names(dots_df) <- c("lon", "lat")
-    dots_df$Party = x
+    dots_df$variable = x
     return(dots_df)
   })
 
