@@ -34,6 +34,9 @@ p <- ggplot() +
 p
 ```
 
+![London](https://github.com/RobWHickman/sf.chlorodot/blob/master/figures/london.png)
+
+
 Another good example using Bosnian ethnicity data can be found [here](https://twitter.com/majda_ruge/status/1037704253043879936). For an extra example I decided to look at South African language diversity, which I'd previously seen good visualisation of [here](https://adrianfrith.com/linguistic-diversity/)
 
 ```{r south_africa, message=FALSE,warning=FALSE}
@@ -121,4 +124,6 @@ p <- ggplot() +
 
 p
 ```
+![South Africa](https://github.com/RobWHickman/sf.chlorodot/blob/master/figures/south_africa.png)
+
 
