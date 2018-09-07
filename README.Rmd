@@ -7,8 +7,66 @@ Hopefully should allow for faster generation of dot chloropleth maps for people 
 
 ```{r}
 library(sf)
-library(sf.chlorodot)
+library(sf.chlordot)
 
-ge_data <- sf.chlordot::
+#get the data to plot
+#merge a shapefile with the population data
+sf_data <- merge(ge_data, uk, by = "ons_id") %>% 
+  st_as_sf() # I'm losing sf class after join so make sf object again
+
+#the columns we want to select and plot
+parties <- names(sf_data)[4:8]
+#set up a colour scale for these if so inclined
+colours = c("blue", "red", "darkgoldenrod", "purple", "green")
+names(colours) = parties
+
+#calculate the dot positions for each column
+sf_dots <- calc_dots(df = sf_data, col_names = parties, n_per_dot = 100)
+
+#plot the results
+library(ggplot2)
+p <- ggplot() +
+  geom_sf(data = sf_data, fill = "transparent",colour = "white") +
+  geom_point(data = sf_dots, aes(lon, lat, colour = Party)) +
+  scale_colour_manual(name = parties, values = colours) +
+  theme_void()
+
+p
+```
+
+Another example using South African language data
+https://twitter.com/majda_ruge/status/1037704253043879936
+```{r}
+library(rvest)
+
+south_africa <- readRDS("C:/Users/Alaa/Downloads/gadm36_ZAF_3_sp.rds") %>% st_as_sf() %>%
+  select(region = NAME_2)
+
+sa_data_url <- "https://census2011.adrianfrith.com"
+south_africa_data <- sa_data_url %>%
+  read_html() %>% html_nodes(".namecell a") %>% html_attr("href") %>% paste0(sa_data_url, .) %>%
+  lapply(., function(x) read_html(x) %>% html_nodes(".namecell a") %>% html_attr("href") %>% paste0(sa_data_url, .)) %>% unlist()
+
+language_data <- rbindlist(lapply(south_africa_data[1:20], function(x) {
+  read <- read_html(x)
+  language_nos <- read %>% html_nodes(".datacell") %>% html_text()
+  start <- grep("Percentage", language_nos)[3] + 1
+  stop <- grep("Population", language_nos) - 1
+  language_nos <- language_nos[start:stop]
+  language_nos <- language_nos[seq(1, length(language_nos), 2)]
+  
+  languages <- read %>% html_nodes("tr > :nth-child(1)") %>% html_text()
+  start <- grep("First language", languages) + 1
+  stop <- grep("Name", languages) - 1
+  languages <- languages[start:stop]
+  
+  region_names <- read %>% html_nodes(".topname") %>% html_text()
+  
+  df <- data.frame(language = languages, primary_speakers = language_nos, region = region_names)
+})) %>%
+  dcast(., region ~ language, value.var = "primary_speakers") %>%
+  left_join(., south_africa)
+
+
 ```
 
