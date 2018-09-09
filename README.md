@@ -1,15 +1,15 @@
 # sf.chlorodot
-##Simple Dot Chloropleth Maps using sf
+## Simple Dot Chloropleth Maps using sf
 
 A packaged version of Paul Campbell's blogpost at https://www.cultureofinsight.com/blog/2018/05/02/2018-04-08-multivariate-dot-density-maps-in-r-with-sf-ggplot2/.
 Hopefully should allow for faster generation of dot chloropleth maps for people wanting to emulate the post. Also contains the data from the blogpost as an example.
 
-###Functions
+### Functions
 Package contains two functions in ./R
   - random_round() straight from Paul Campbell's blogpost and Jens von Bergmann's package for dot chloropleths. Rounds numbes up or down randomly
   - calc_dots() modified Paul Campbell's blogpost pipeline into a function in base R to calculate the random position of dots within a shapefile
   
-###Examples
+### Examples
 Two examples below. The first using the data from the original blogpost. A second one scraping South African census 2011 data from Adrian Frith's site to plot the distribution of primary languages within the country. Both are plotted using custom theme elements from the original blog.
 
 ```{r example, warning=FALSE,message=FALSE}
