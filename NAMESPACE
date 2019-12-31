@@ -2,3 +2,4 @@
 
 export(calc_dots)
 export(random_round)
+export(theme_dotdensity)
