@@ -9,4 +9,4 @@ Description: Functions to generate dot chloropleth maps using sf
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
