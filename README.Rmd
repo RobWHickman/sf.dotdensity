@@ -12,7 +12,7 @@ Package contains two functions in ./R
 ### Examples
 Two examples are presented below. The first using the data from the original blogpost. A second one scraping South African census 2011 data from [Adrian Frith's site](https://census2011.adrianfrith.com) to plot the distribution of primary languages within the country. Both are plotted using custom theme elements from the original blog.
 
-```{r example, warning=FALSE,message=FALSE}
+```{r london_example, warning=FALSE,message=FALSE}
 #load libraries
 library(sf)
 #devtools::install_github("RobWHickman/sf.dotdensity")
@@ -42,7 +42,7 @@ london_dots <- calc_dots(df = london_sf_data,
 
 #plot the results
 library(ggplot2)
-p <- ggplot() +
+london_plot <- ggplot() +
   #first add the shape as a background
   geom_sf(data = london_sf_data, fill = "transparent",colour = "white") +
   #add the dots
@@ -63,15 +63,15 @@ p <- ggplot() +
         legend.text = element_text(size=12))
 
 #plot
-p
+london_plot
 ```
 
-Another good example using Bosnian ethnicity data can be found [here](https://twitter.com/majda_ruge/status/1037704253043879936). For an extra example I decided to look at South African language diversity, which I'd previously seen good visualisation of [here](https://adrianfrith.com/linguistic-diversity/)
+Another good example using Bosnian ethnicity data (which is used in the package hex sticker) can be found [here](https://twitter.com/majda_ruge/status/1037704253043879936). For an extra example I decided to look at South African language diversity, which I'd previously seen good visualisation of [here](https://adrianfrith.com/linguistic-diversity/)
 
-```{r south_africa, message=FALSE,warning=FALSE}
+```{r south_africa_example, message=FALSE,warning=FALSE}
+#libraries to download and munge data
 library(rvest)
 library(tidyverse)
-library(data.table)
 
 #download the South African shapefile fom gadm
 admin_url <- "https://biogeo.ucdavis.edu/data/gadm3.6/Rsf/gadm36_ZAF_3_sf.rds"
@@ -87,8 +87,15 @@ south_africa <- readRDS("shapefiles.rds") %>%
 #get the links to the data from Adrian Frith's site
 sa_data_url <- "https://census2011.adrianfrith.com"
 south_africa_data <- sa_data_url %>%
-  read_html() %>% html_nodes(".namecell a") %>% html_attr("href") %>% paste0(sa_data_url, .) %>%
-  lapply(., function(x) read_html(x) %>% html_nodes(".namecell a") %>% html_attr("href") %>% paste0(sa_data_url, .)) %>% unlist() %>%
+  read_html() %>% 
+  html_nodes(".namecell a") %>%
+  html_attr("href") %>%
+  paste0(sa_data_url, .) %>%
+  lapply(., function(x) read_html(x) %>% 
+           html_nodes(".namecell a") %>%
+           html_attr("href") %>%
+           paste0(sa_data_url, .)) %>%
+  unlist() %>%
    lapply(., function(x) read_html(x) %>% html_nodes(".namecell a") %>% html_attr("href") %>% paste0(sa_data_url, .)) %>% unlist()
 
 #scrape the data on primary language from the 2011 South African census
