@@ -6,7 +6,7 @@ Hopefully should allow for faster generation of dot chloropleth maps for people 
 
 ### Functions
 Package contains two functions in ./R
-  - random_round() straight from Paul Campbell's blogpost and Jens von Bergmann's package for dot chloropleths. Rounds numbes up or down randomly
+  - random_round() straight from Paul Campbell's blogpost and Jens von Bergmann's package for dot density. Rounds numbes up or down randomly
   - calc_dots() modified Paul Campbell's blogpost pipeline into a function in base R to calculate the random position of dots within a shapefile
   
 ### Examples
