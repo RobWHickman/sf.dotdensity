@@ -1,5 +1,5 @@
 # sf.chlorodot
-## Simple Dot Chloropleth Maps using sf
+## Simple Dot Density Maps using sf
 
 A packaged version of Paul Campbell's blogpost at https://www.cultureofinsight.com/blog/2018/05/02/2018-04-08-multivariate-dot-density-maps-in-r-with-sf-ggplot2/.
 Hopefully should allow for faster generation of dot chloropleth maps for people wanting to emulate the post. Also contains the data from the blogpost as an example.
