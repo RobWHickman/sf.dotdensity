@@ -1,9 +1,9 @@
-# random_round
-#
-# A function which calculates how many dots each class
-# will have for each given shape
-#
-# credit to Jens von Bergmann for this algo https://github.com/mountainMath/dotdensity/blob/master/R/dot-density.R
+#' random_round
+#'
+#' A function which calculates how many dots each class
+#' will have for each given shape
+#'
+#' credit to Jens von Bergmann for this algo https://github.com/mountainMath/dotdensity/blob/master/R/dot-density.R
 #
 #' @author
 #' Jens von Bergmann, Paul Campbell, Robert Hickman

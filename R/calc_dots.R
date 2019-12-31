@@ -1,10 +1,10 @@
-# calc_dots
-#
-# A function which calculates the position of number and position
-#     of dots in the final plot for each row of data.
-#
-# credit to Paul Campbell for the function in his blogpost https://www.cultureofinsight.com/blog/2018/05/02/2018-04-08-multivariate-dot-density-maps-in-r-with-sf-ggplot2/
-#
+#' calc_dots
+#'
+#' A function which calculates the position of number and position
+#'     of dots in the final plot for each row of data.
+#'
+#' credit to Paul Campbell for the function in his blogpost https://www.cultureofinsight.com/blog/2018/05/02/2018-04-08-multivariate-dot-density-maps-in-r-with-sf-ggplot2/
+#'
 #' @param df the merged df of a shapefile and population data
 #' @param col_names a vector of col_names to select from this merged data. If selecting all columns, can leave as NULL
 #' @param n_per_dot the number of n people in each category for every dot
@@ -14,7 +14,7 @@
 #' @export
 
 calc_dots <- function(df, col_names, n_per_dot) {
-  if(is.null(col_names)) col_names = names(sf_data)
+  if(is.null(col_names)) col_names = names(df)
 
   #get the numbers of dots for each observation
   num_dots <- as.data.frame(df)
