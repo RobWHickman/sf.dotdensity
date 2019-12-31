@@ -24,34 +24,45 @@ london_election_data <- sf.dotdensity::london_election_data
 
 #get the data to plot
 #merge a shapefile with the population data
-sf_data <- merge(ge_data, uk, by = "ons_id") %>% 
-  st_as_sf() # I'm losing sf class after join so make sf object again
+london_sf_data <- merge(london_shapefile, london_election_data, by = "ons_id")
 
 #the columns we want to select and plot
-parties <- names(sf_data)[4:8]
+parties <- names(london_sf_data)[4:8]
 #set up a colour scale for these if so inclined
 colours = c("deepskyblue", "red", "gold", "purple", "green")
 names(colours) = parties
 
+#how many people should lead to one dot
+people_per_dots = 100
+
 #calculate the dot positions for each column
-sf_dots <- calc_dots(df = sf_data, col_names = parties, n_per_dot = 100)
+london_dots <- calc_dots(df = london_sf_data,
+                         col_names = parties,
+                         n_per_dot = people_per_dots)
 
 #plot the results
 library(ggplot2)
 p <- ggplot() +
-  geom_sf(data = sf_data, fill = "transparent",colour = "white") +
-  geom_point(data = sf_dots, aes(lon, lat, colour = variable), size = 0.5) +
+  #first add the shape as a background
+  geom_sf(data = london_sf_data, fill = "transparent",colour = "white") +
+  #add the dots
+  geom_point(data = london_dots, aes(lon, lat, colour = variable), size = 0.5) +
+  #colour based on the scale already defined
   scale_colour_manual(name = "Party", values = colours) +
+  #title
+  ggtitle("Dot Density Map of London in the 2017 General Election",
+          subtitle = paste("one dot equals", people_per_dots, "people")) +
+  #remove superfluous themes
   theme_void() +
   guides(colour = guide_legend(override.aes = list(size = 10))) +
   theme(plot.background = element_rect(fill = "#212121", color = NA), 
         panel.background = element_rect(fill = "#212121", color = NA),
         legend.background = element_rect(fill = "#212121", color = NA),
-        text =  element_text(color = "white"),
-        title =  element_text(color = "white"),
-        legend.text=element_text(size=12))
+        text = element_text(color = "white", size = 20),
+        title = element_text(color = "white", size = 16),
+        legend.text = element_text(size=12))
 
-
+#plot
 p
 ```
 
