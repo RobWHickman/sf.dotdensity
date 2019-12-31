@@ -15,6 +15,7 @@ Two examples are presented below. The first using the data from the original blo
 ```{r example, warning=FALSE,message=FALSE}
 #load libraries
 library(sf)
+#devtools::install_github("RobWHickman/sf.dotdensity")
 library(sf.dotdensity)
 
 #load the data

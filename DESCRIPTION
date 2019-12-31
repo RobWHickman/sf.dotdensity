@@ -1,4 +1,4 @@
-Package: sf.chlordot
+Package: sf.dotdensity
 Type: Package
 Title: Easy Dot Density Maps using Simple Features
 Version: 0.8.0
