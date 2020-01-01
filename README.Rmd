@@ -33,7 +33,7 @@ colours = c("deepskyblue", "red", "gold", "purple", "green")
 names(colours) = parties
 
 #how many people should lead to one dot
-people_per_dots = 100
+people_per_dots = 1000
 
 #calculate the dot positions for each column
 london_dots <- calc_dots(df = london_sf_data,
@@ -52,19 +52,16 @@ london_plot <- ggplot() +
   #title
   ggtitle("Dot Density Map of London in the 2017 General Election",
           subtitle = paste("one dot equals", people_per_dots, "people")) +
-  #remove superfluous themes
-  theme_void() +
-  guides(colour = guide_legend(override.aes = list(size = 10))) +
-  theme(plot.background = element_rect(fill = "#212121", color = NA), 
-        panel.background = element_rect(fill = "#212121", color = NA),
-        legend.background = element_rect(fill = "#212121", color = NA),
-        text = element_text(color = "white", size = 20),
-        title = element_text(color = "white", size = 16),
-        legend.text = element_text(size=12))
+  theme_dotdensity() +
+  #make the legend shapes bigger so it's possible to see them clearly
+  guides(colour = guide_legend(override.aes = list(size = 10)))
 
 #plot
 london_plot
 ```
+
+
+
 
 Another good example using Bosnian ethnicity data (which is used in the package hex sticker) can be found [here](https://twitter.com/majda_ruge/status/1037704253043879936). For an extra example I decided to look at South African language diversity, which I'd previously seen good visualisation of [here](https://adrianfrith.com/linguistic-diversity/)
 

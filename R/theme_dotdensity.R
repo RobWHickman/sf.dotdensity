@@ -5,18 +5,18 @@
 #'
 #'
 #' @param legend whether or not to include a legend
+#' @param legend_size the size of the text and icons in the legend
 #' @param background_colour the colour code of the background of the plot. Defaults to #212121 (very dark grey)
 #' @param text_colour the text colour for the plot. Defaults to white
-#' @param border whether or not to include a border
 #'
 #' @author
 #' Robert Hickman
 #' @export
 
 theme_dotdensity <- function(legend = TRUE,
-                             background_colour = background_colour,
-                             text_colour = "white",
-                             border = FALSE) {
+                             legend_size = 10,
+                             background_colour = "#212121",
+                             text_colour = "white") {
   basic_theme <- ggplot2::theme_void()
 
   #if including a legend
@@ -26,26 +26,15 @@ theme_dotdensity <- function(legend = TRUE,
   } else {
     basic_theme <- basic_theme + 
       ggplot2::theme(legend.text = element_text(size = 12, colour = text_colour)) +
-      ggplot2::theme(legend.background = element_rect(fill = background_colour, color = NA))
+      ggplot2::theme(legend.background = element_rect(fill = background_colour, color = NA)) 
   }
 
-  #to colour the bacground
-  if(!background_colour) {
-    basic_theme <- basic_theme
-  } else {
-    basic_theme <- basic_theme + 
-      ggplot2::theme(plot.background = element_rect(fill = background_colour, color = NA), 
-                     panel.background = element_rect(fill = background_colour, color = NA),
-                     text = element_text(color = text_colour, size = 20),
-                     title = element_text(color = text_colour, size = 16))
-  }
-  
-  if(!border) {
-    basic_theme <- basic_theme
-  } else {
-    basic_theme <- basic_theme + 
-      ggplot2::theme(panel.border = ggplot2::element_rect(colour = "#F5F5F5", fill = NA)) # white smoke colour
-  }
+  #to colour the background
+  basic_theme <- basic_theme + 
+    ggplot2::theme(plot.background = element_rect(fill = background_colour, color = NA), 
+                   panel.background = element_rect(fill = background_colour, color = NA),
+                   text = element_text(color = text_colour, size = 20),
+                   title = element_text(color = text_colour, size = 16))
   
   basic_theme
 }
