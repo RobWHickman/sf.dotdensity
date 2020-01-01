@@ -4,17 +4,17 @@
 \alias{theme_dotdensity}
 \title{theme_dotdensity}
 \usage{
-theme_dotdensity(legend = TRUE, background_colour = background_colour,
-  text_colour = "white", border = FALSE)
+theme_dotdensity(legend = TRUE, legend_size = 10,
+  background_colour = "#212121", text_colour = "white")
 }
 \arguments{
 \item{legend}{whether or not to include a legend}
 
+\item{legend_size}{the size of the text and icons in the legend}
+
 \item{background_colour}{the colour code of the background of the plot. Defaults to #212121 (very dark grey)}
 
 \item{text_colour}{the text colour for the plot. Defaults to white}
-
-\item{border}{whether or not to include a border}
 }
 \description{
 A function which colours the background of a dot density map.
