@@ -65,6 +65,25 @@ london_plot
 
 Another good example using Bosnian ethnicity data (which is used in the package hex sticker) can be found [here](https://twitter.com/majda_ruge/status/1037704253043879936). For an extra example I decided to look at South African language diversity, which I'd previously seen good visualisation of [here](https://adrianfrith.com/linguistic-diversity/)
 
+```{r bosnia_example, message=FALSE,warning=FALSE}
+bosnia_sf_data <- merge(bosnia_shapefile, bosnia_ethnicity_data, by = "district")
+
+ethnicities <- c("Bosniak", "Serb", "Croat", "Others")
+bosnia_palette <- c("goldenrod", "mediumblue", "white", "grey")
+names(bosnia_palette) <- ethnicities
+
+bosnia_dots <- calc_dots(bosnia_sf_data, col_names = ethnicities, n_per_dot = 100)
+
+bosnia_plot <- ggplot() +
+  geom_sf(data = bosnia_shapefile, fill = NA, colour = "white") +
+  geom_point(data = bosnia_dots, aes(lon, lat, colour = variable), size = 0.5) +
+  scale_colour_manual(name = "Party", values = bosnia_palette) +
+  theme_dotdensity(legend = FALSE) +
+  guides(colour = guide_legend(override.aes = list(size = 10)))
+
+```
+
+
 ```{r south_africa_example, message=FALSE,warning=FALSE}
 #libraries to download and munge data
 library(rvest)
