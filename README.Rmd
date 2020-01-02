@@ -3,8 +3,11 @@ title: "README"
 output: github_document
 pagetitle: README
 ---
+<!-- README.md is generated from README.Rmd. Please edit README.Rmd (this file) -->
 
+[![Build Status](https://travis-ci.org/RobWHickman/sf.dotdensity.png)](https://travis-ci.org/RobWHickman/dsf.dotdensity)
 <img src = "./figures/sticker.png" align = "right" width = "200"/>
+
 # sf.dotdensity
 ## Simple Dot Density Maps using sf
 
