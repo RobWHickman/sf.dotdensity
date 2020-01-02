@@ -1,3 +1,4 @@
+<img src = "./figures/sticker.png" align = "right" width = "200"/>
 # sf.dotdensity
 ## Simple Dot Density Maps using sf
 
@@ -75,7 +76,8 @@ bosnia_dots <- calc_dots(bosnia_sf_data, col_names = ethnicities, n_per_dot = 10
 
 bosnia_plot <- ggplot() +
   geom_sf(data = bosnia_shapefile, fill = NA, colour = "white") +
-  geom_point(data = bosnia_dots, aes(lon, lat, colour = variable), size = 0.5) +
+  geom_point(data = bosnia_dots, aes(lon, lat, colour = variable), 
+             size = 0.5, alpha = 0.7, shape = 19) +
   scale_colour_manual(name = "Party", values = bosnia_palette) +
   theme_dotdensity(legend = FALSE) +
   guides(colour = guide_legend(override.aes = list(size = 10)))
