@@ -1,8 +1,17 @@
-{
-  "os": "linux",
-  "dist": "trusty",
-  "sudo": false,
-  "cache": "packages",
-  "group": "stable",
-  "language": "r"
-}
+language: R
+sudo: false
+cache: packages
+r:
+  - oldrel
+  - release
+  - devel
+
+git:
+  submodules: false
+
+warnings_are_errors: true
+
+addons:
+  apt:
+    packages:
+      - libudunits2-dev
