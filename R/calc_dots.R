@@ -12,6 +12,7 @@
 #' @author
 #' Paul Campbell, Robert Hickman
 #' @export
+#' @import sf
 
 calc_dots <- function(df, col_names, n_per_dot) {
   if(is.null(col_names)) col_names = names(df)
@@ -32,8 +33,8 @@ calc_dots <- function(df, col_names, n_per_dot) {
 
   #calculate the position of each dot within the shapefile boundaries
   data <- lapply(names(num_dots), function(x) {
-    dots_df <- st_sample(df, size = unlist(num_dots[x]), type = "random")
-    dots_df <- st_coordinates(st_cast(dots_df, "POINT"))
+    dots_df <- sf::st_sample(df, size = unlist(num_dots[x]), type = "random")
+    dots_df <- sf::st_coordinates(st_cast(dots_df, "POINT"))
     dots_df <- as.data.frame(dots_df)
     names(dots_df) <- c("lon", "lat")
     dots_df$variable = x
