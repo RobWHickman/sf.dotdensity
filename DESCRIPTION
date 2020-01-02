@@ -1,8 +1,8 @@
 Package: sf.dotdensity
 Type: Package
 Title: Easy Dot Density Maps using Simple Features
-Version: 0.8.0
-Date: 2019-12-31
+Version: 0.9.0
+Date: 2020-01-02
 Author: Robert Hickman, Paul Campbell, Jens von Bergmann
 Maintainer: Robert Hickman <robwhickman@gmail.com>
 URL: https://github.com/RobWHickman/sf.dotdensity
