@@ -4,7 +4,8 @@ README
 <!-- README.md is generated from README.Rmd. Please edit README.Rmd (this file) -->
 
 <img src = "./figures/sticker.png" align = "right" width = "200"/> \#
-sf.dotdensity \#\# Simple Dot Density Maps using sf
+# sf.dotdensity 
+## Simple Dot Density Maps using sf
 
 A packaged version of Paul Campbell’s blogpost found
 [here](https://www.cultureofinsight.com/blog/2018/05/02/2018-04-08-multivariate-dot-density-maps-in-r-with-sf-ggplot2/).
