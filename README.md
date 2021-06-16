@@ -8,7 +8,7 @@ README
 ## Simple Dot Density Maps using sf
 
 A packaged version of Paul Campbell’s blogpost found
-[here](https://www.cultureofinsight.com/blog/2018/05/02/2018-04-08-multivariate-dot-density-maps-in-r-with-sf-ggplot2/).
+[here](https://web.archive.org/web/20180928043346/https://www.cultureofinsight.com/blog/2018/05/02/2018-04-08-multivariate-dot-density-maps-in-r-with-sf-ggplot2/).
 Hopefully should allow for faster generation of dot density maps for
 people wanting to emulate the post. Also contains the data from the
 blogpost as an example.
