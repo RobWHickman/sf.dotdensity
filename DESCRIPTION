@@ -8,11 +8,14 @@ Maintainer: Robert Hickman <robwhickman@gmail.com>
 URL: https://github.com/RobWHickman/sf.dotdensity
 Description: Functions to generate dot density maps using sf
     Packaged form of https://www.cultureofinsight.com/blog/2018/05/02/2018-04-08-multivariate-dot-density-maps-in-r-with-sf-ggplot2/
-License: MIT + file LICENSE
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+Depends: R (>= 3.5.0)
 VignetteBuilder: knitr
 Imports:
   sf,
-  ggplot2
+  ggplot2,
+  parallel,
+  knitr

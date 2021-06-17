@@ -7,15 +7,16 @@
 #
 #' @author
 #' Jens von Bergmann, Paul Campbell, Robert Hickman
+#' @importFrom stats runif
 #' @export
 
 random_round <- function(x) {
-  v=as.integer(x)
-  r=x-v
-  test=runif(length(r), 0.0, 1.0)
-  add=rep(as.integer(0),length(r))
+  v <- as.integer(x)
+  r <- x <- v
+  test <- runif(length(r), 0.0, 1.0)
+  add <- rep(as.integer(0),length(r))
   add[r>test] <- as.integer(1)
-  value=v+add
-  ifelse(is.na(value) | value<0,0,value)
+  value <- v+add
+  ifelse(is.na(value) | value<0, 0, value)
   return(value)
 }
