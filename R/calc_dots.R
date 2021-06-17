@@ -13,6 +13,7 @@
 #' Paul Campbell, Robert Hickman
 #' @export
 #' @import sf, parallel
+#' @importFrom data.table bindlist
 
 calc_dots <- function(df, col_names, n_per_dot, ncores = parallel::detectCores()) {
   if(is.null(col_names)) col_names = names(df)
@@ -41,7 +42,8 @@ calc_dots <- function(df, col_names, n_per_dot, ncores = parallel::detectCores()
   }, mc.cores = ncores)
 
   #bind this data together and randomly shuffle
-  sf_dots <- do.call("rbind", data)
+  #sf_dots <- do.call("rbind", data) Using data.table should be faster
+  sf_dots <-  data.table::rbindlist(data)
   sf_dots <- sf_dots[sample(1:nrow(sf_dots)),]
   return(sf_dots)
 }

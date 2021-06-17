@@ -16,6 +16,7 @@ Depends: R (>= 3.5.0)
 VignetteBuilder: knitr
 Imports:
   sf,
+  data.table,
   ggplot2,
   parallel,
   knitr
