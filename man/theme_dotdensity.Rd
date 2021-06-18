@@ -4,8 +4,12 @@
 \alias{theme_dotdensity}
 \title{theme_dotdensity}
 \usage{
-theme_dotdensity(legend = TRUE, legend_size = 10,
-  background_colour = "#212121", text_colour = "white")
+theme_dotdensity(
+  legend = TRUE,
+  legend_size = 10,
+  background_colour = "#212121",
+  text_colour = "white"
+)
 }
 \arguments{
 \item{legend}{whether or not to include a legend}

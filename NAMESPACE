@@ -3,4 +3,8 @@
 export(calc_dots)
 export(random_round)
 export(theme_dotdensity)
+import(ggplot2)
+import(parallel)
 import(sf)
+importFrom(data.table,rbindlist)
+importFrom(stats,runif)

@@ -6,7 +6,11 @@
 \alias{london_election_data}
 \alias{bosnia_ethnicity_data}
 \title{Census Ethnicity Data to replicate Bosnia dot density map from https://twitter.com/ImerM1/status/1037358973807210498}
-\format{A data frame with 141 rows and 20 variables}
+\format{
+A data frame with 141 rows and 20 variables
+
+A data frame with 73 rows and 8 variables
+}
 \usage{
 data(london_election_data)
 

@@ -5,7 +5,11 @@
 \alias{london_shapefile}
 \alias{bosnia_shapefile}
 \title{Shape Data to replicate Bosnia dot density map from https://twitter.com/ImerM1/status/1037358973807210498}
-\format{A data frame with 141 rows and 2 variables}
+\format{
+A data frame with 141 rows and 2 variables
+
+A data frame with 73 rows and 2 variables
+}
 \usage{
 data(london_shapefile)
 

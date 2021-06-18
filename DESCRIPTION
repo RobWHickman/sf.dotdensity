@@ -11,8 +11,13 @@ Description: Functions to generate dot density maps using sf
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
+Depends: R (>= 3.5.0)
 VignetteBuilder: knitr
 Imports:
   sf,
-  ggplot2
+  data.table,
+  ggplot2,
+  parallel,
+  knitr
+
