@@ -4,7 +4,7 @@
 #' will have for each given shape
 #'
 #' credit to Jens von Bergmann for this algo https://github.com/mountainMath/dotdensity/blob/master/R/dot-density.R
-#
+#' @param x an integer
 #' @author
 #' Jens von Bergmann, Paul Campbell, Robert Hickman
 #' @importFrom stats runif
@@ -15,8 +15,8 @@ random_round <- function(x) {
   r <- x <- v
   test <- runif(length(r), 0.0, 1.0)
   add <- rep(as.integer(0),length(r))
-  add[r>test] <- as.integer(1)
-  value <- v+add
-  ifelse(is.na(value) | value<0, 0, value)
+  add[r > test] <- as.integer(1)
+  value <- v + add
+  ifelse(is.na(value) | value < 0, 0, value)
   return(value)
 }

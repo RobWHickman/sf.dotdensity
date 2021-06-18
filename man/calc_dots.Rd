@@ -4,7 +4,13 @@
 \alias{calc_dots}
 \title{calc_dots}
 \usage{
-calc_dots(df, col_names, n_per_dot)
+calc_dots(
+  df,
+  col_names,
+  n_per_dot,
+  ncores = parallel::detectCores(),
+  col_keep = NULL
+)
 }
 \arguments{
 \item{df}{the merged df of a shapefile and population data}
@@ -12,6 +18,10 @@ calc_dots(df, col_names, n_per_dot)
 \item{col_names}{a vector of col_names to select from this merged data. If selecting all columns, can leave as NULL}
 
 \item{n_per_dot}{the number of n people in each category for every dot}
+
+\item{ncores}{a numeric, number of cores to use for dot sampling. Default set to maximum of cores available as returned by`parallel::detectCores()`}
+
+\item{col_keep}{a vector of column names from `df` to bind back to the resulting dots, default NULL}
 }
 \description{
 A function which calculates the position of number and position
@@ -19,6 +29,30 @@ A function which calculates the position of number and position
 }
 \details{
 credit to Paul Campbell for the function in his blogpost https://www.cultureofinsight.com/blog/2018/05/02/2018-04-08-multivariate-dot-density-maps-in-r-with-sf-ggplot2/
+}
+\examples{
+\dontrun{
+london_shapefile <- sf.dotdensity::london_shapefile
+london_election_data <- sf.dotdensity::london_election_data
+# get the data to plot
+# merge a shapefile with the population data
+london_sf_data <- merge(london_shapefile, london_election_data, by = "ons_id")
+
+#the columns we want to select and plot
+parties <- names(london_sf_data)[4:8]
+#set up a colour scale for these if so inclined
+colours = c("deepskyblue", "red", "gold", "purple", "green")
+names(colours) = parties
+
+#how many people should lead to one dot
+people_per_dots <- 1000
+
+#calculate the dot positions for each column
+london_dots <- calc_dots(df = london_sf_data,
+                         col_names = parties,
+                         n_per_dot = people_per_dots,
+                         col_keep = "constituency_name")
+}
 }
 \author{
 Paul Campbell, Robert Hickman

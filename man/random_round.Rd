@@ -6,6 +6,9 @@
 \usage{
 random_round(x)
 }
+\arguments{
+\item{x}{an integer}
+}
 \description{
 A function which calculates how many dots each class
 will have for each given shape
