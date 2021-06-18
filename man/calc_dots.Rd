@@ -4,13 +4,7 @@
 \alias{calc_dots}
 \title{calc_dots}
 \usage{
-calc_dots(
-  df,
-  col_names,
-  n_per_dot,
-  ncores = parallel::detectCores(),
-  col_keep = NULL
-)
+calc_dots(df, col_names, n_per_dot, ncores = 1, col_keep = NULL)
 }
 \arguments{
 \item{df}{the merged df of a shapefile and population data}
@@ -19,7 +13,7 @@ calc_dots(
 
 \item{n_per_dot}{the number of n people in each category for every dot}
 
-\item{ncores}{a numeric, number of cores to use for dot sampling. Default set to maximum of cores available as returned by`parallel::detectCores()`}
+\item{ncores}{a numeric, number of parallel cores to use for dot sampling. Default set to 1, so no multicore parralelisation. To set to the maximum of cores available use: `parallel::detectCores()`}
 
 \item{col_keep}{a vector of column names from `df` to bind back to the resulting dots, default NULL}
 }

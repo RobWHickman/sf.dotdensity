@@ -8,7 +8,7 @@
 #' @param df the merged df of a shapefile and population data
 #' @param col_names a vector of col_names to select from this merged data. If selecting all columns, can leave as NULL
 #' @param n_per_dot the number of n people in each category for every dot
-#' @param ncores a numeric, number of cores to use for dot sampling. Default set to maximum of cores available as returned by`parallel::detectCores()`
+#' @param ncores a numeric, number of parallel cores to use for dot sampling. Default set to 1, so no multicore parralelisation. To set to the maximum of cores available use: `parallel::detectCores()`
 #' @param col_keep a vector of column names from `df` to bind back to the resulting dots, default NULL 
 #' @import sf parallel
 #' @importFrom data.table rbindlist
@@ -44,7 +44,7 @@
 calc_dots <- function(df, 
                       col_names, 
                       n_per_dot, 
-                      ncores = parallel::detectCores(),
+                      ncores = 1,
                       col_keep = NULL) {
   if(is.null(col_names)) col_names = names(df)
   if(!is.null(col_keep)) {
