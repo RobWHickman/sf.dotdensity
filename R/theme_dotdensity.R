@@ -8,7 +8,7 @@
 #' @param legend_size the size of the text and icons in the legend
 #' @param background_colour the colour code of the background of the plot. Defaults to #212121 (very dark grey)
 #' @param text_colour the text colour for the plot. Defaults to white
-#'
+#' @import ggplot2
 #' @author
 #' Robert Hickman
 #' @export
